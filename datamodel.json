@@ -1,0 +1,63 @@
+[{
+	"Name":"Request",
+	"Fields":[
+		{"Name":"Id", "Type":"int(11)", "PrimaryKey":true, "NotNull":true},
+		{"Name":"LocationZipcode", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"LocationCity", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Description", "Type":"varchar(10000)", "NotNull":true},
+		{"Name":"Firstname", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Lastname", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Mail", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Phone", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"GuidPublic", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"GuidPrivate", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"MaxAmountOfOffers", "Type":"int(11)", "NotNull":true},
+		{"Name":"DateTimePosted", "Type":"datetime", "NotNull":true},
+		{"Name":"DateTimeReviewed", "Type":"datetime", "NotNull":false},
+		{"Name":"IsVerifiedByMail", "Type":"int(11)", "NotNull":false},
+		{"Name":"IsAccepted", "Type":"int(11)", "NotNull":false},
+		{"Name":"IsActive", "Type":"int(11)", "NotNull":false},
+		{"Name":"IsCanceled", "Type":"int(11)", "NotNull":false},
+		{"Name":"CategoryId", "Type":"int(11)", "NotNull":false,"ForeignKeyOf":"Category"},
+		{"Name":"ReviewedBy", "Type":"varchar(100)", "NotNull":false}
+	]
+},{
+	"Name":"Offer",
+	"Fields":[
+		{"Name":"Id", "Type":"int(11)", "PrimaryKey":true, "NotNull":true},
+		{"Name":"RequestId", "Type":"int(11)", "NotNull":true, "ForeignKeyOf":"Request"},
+		{"Name":"Firstname", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Lastname", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Description", "Type":"varchar(1000)", "NotNull":true},
+		{"Name":"Mail", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"Phone", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"DateTimePosted", "Type":"datetime", "NotNull":true},
+		{"Name":"DateTimeReviewed", "Type":"datetime", "NotNull":false},
+		{"Name":"IsVerifiedByMail", "Type":"int(11)", "NotNull":false},
+		{"Name":"IsAccepted", "Type":"int(11)", "NotNull":false},
+		{"Name":"GuidPublic", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"GuidPrivate", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"ReviewedBy", "Type":"varchar(100)", "NotNull":false},
+		{"Name":"IsMailed", "Type":"int(11)", "NotNull":true}
+		
+	]
+},{
+	"Name":"Category",
+	"Fields":[
+		{"Name":"Id", "Type":"int(11)", "PrimaryKey":true, "NotNull":true},
+		{"Name":"Name", "Type":"varchar(100)", "NotNull":true}
+	]
+},{
+	"Name":"Hero",
+	"Fields":[
+		{"Name":"Id", "Type":"int(11)", "PrimaryKey":true, "NotNull":true},
+		{"Name":"Mail", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"DateTimeCreated", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"IsVerifiedByMail", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"LocationZipcode", "Type":"varchar(100)", "NotNull":true},
+		{"Name":"LocationCity", "Type":"varchar(100)", "NotNull":false},
+		{"Name":"GuidPrivate", "Type":"varchar(100)", "NotNull":true}
+	]
+}]
+
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-4">
+
+			{% if offer.IsVerifiedByMail==0 %}
+				<form method="post">
+					<input name="verify" value="1" type="hidden" />
+					<button type="submit" class="btn btn-primary mb-2">Klik hier om je aanbod te bevestigen</button>
+				</form>
+			{% else %}
+				<p>Je aanbod is geverifieerd. Zodra wij hem bekeken hebben, komt hij online!</p>
+			<p>
+				<a href="index.php">< Terug naar de homepage</a>
+			</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

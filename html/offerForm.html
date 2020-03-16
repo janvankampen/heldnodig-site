@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-4">
+			<h1>Hulpvraag</h1>
+			
+			<p>
+				<a href="index.php">< Terug naar de homepage</a>
+			</p>
+			
+			<strong>Locatie:</strong><br>
+			{{ request.LocationZipcode }} {{ request.LocationCity }} (<a href="https://www.google.nl/maps/search/{{ request.LocationZipcode }}" target="_blank">Maps</a>)<br><br>
+			
+			<strong>Categorie:</strong><br>
+			{{ request.Category }}<br><br>
+			
+			<strong>Hulpvraag:</strong><br>
+			{{ request.Description }}<br><br>
+		</div>
+
+		<div class="col-md-4">
+			<h1>Aanbod</h1>
+		<form method="post">
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">Voornaam</label>
+		    <input type="text" class="form-control" name="firstname" placeholder="Piet" required="">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">Achternaam</label>
+		    <input type="text" class="form-control" name="lastname" placeholder="Paulusma" required="">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">E-mailadres</label>
+		    <input type="email" class="form-control" name="mail" placeholder="piet@paulusma.com" required="">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlInput1">Telefoonnummer</label>
+		    <input type="phone" class="form-control" name="phone" placeholder="0612345678" required="">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleFormControlTextarea1">Berichtje voor vrager</label>
+		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" required=""></textarea>
+		  </div>
+		  <div class="g-recaptcha" data-sitekey="6LfvTOEUAAAAADCwQ8B23Gzp6DTnqfgpiAmRO1CX"></div>
+		  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		  <br>
+		  
+		  <h2>Veiligheid en omgang</h2>
+		  <p>Ga op een veilige manier met elkaar om. Volg de richtlijnen van het RIVM, en denk logisch na. Als je boodschappen voor iemand doet, lever ze dan 'contactloos' af bijvoorbeeld. Hou een veilige afstand om besmetting te voorkomen. Zonder de helden van dit platform, kunnen er namelijk geen hulpvragen opgelost worden.</p>
+		  <p>
+			  Wees ook aardig voor elkaar. De hulpvrager gaat zelf contact met je opnemen indien nodig. Het kan zo zijn dat iemand niet meteen reageert. Ook kan het zijn dat iemand geen contact opneemt, want we laten altijd minimaal 3 reacties per hulpvraag toe. Dit kan betekenen dat een andere held al de vraag heeft opgepakt.</p>
+			  <p>
+				  HeldNodig.nl is niet verantwoordelijk voor de communicatie tussen de hulpvrager en de held, en wat daaruit voortvloeit. Wij verbinden de twee personen alleen. Als er toch een vervelende situatie voordoet, laat het dan weten via info@doodlesoft.nl, zodat wij kunnen nagaan of we deze persoon kunnen blokkeren.
+			  </p>
+		  <input type="checkbox" required=""> Ik ga zal veilig te werk gaan, en aardig blijven<br><br>
+		  
+		  <h2>Privacy</h2>
+		  <p>Gezien de tijdsdruk van dit project in deze crisis, heeft HeldNodig.nl geen eigen stichting. Alle data wordt opgeslagen bij Microsoft Azure in regio West-Europa. De verantwoordelijke voor het beheren van de data is Jan van Kampen (Contactgegevens: <a href="https://doodlesoft.nl" target="_blank">DoodleSoft</a>). Je mailadres en telefoonnummer worden alleen met de hulpvrager gedeeld, en worden uitgevraagd voor het eventueel beoordelen en verifiëren van je aanbod.</p>
+		  <p>Na het cancelen of het afronden van het hulpverzoek wordt je data verwijderd. Alle data wordt ook verwijderd aan het eind van deze Corona-crisis of uiterlijk 01-06-2020. Je mag natuurlijk ook altijd contact opnemen als je wilt dat we data verwijderen.</p>
+		  
+		  <input type="checkbox" required=""> Ik ga akkoord<br><br>
+		  
+		  <button type="submit" class="btn btn-primary mb-2">Aanbod versturen</button>
+		</form>
+		</div>
+	</div>
+	
+	
+{% endblock %}
