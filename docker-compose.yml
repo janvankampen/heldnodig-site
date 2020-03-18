@@ -1,0 +1,45 @@
+version: "3.1"
+services:
+
+    mariadb:
+      image: mariadb:10.4
+      container_name: test-mariadb
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=test
+        - MYSQL_USER=test
+        - MYSQL_PASSWORD=test
+      networks:
+        - heldnodig
+    
+
+    webserver:
+      image: nginx:alpine
+      container_name: test-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      networks:
+        - heldnodig
+      ports:
+       - "3000:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: test-php-fpm
+      working_dir: /application
+      environment:
+        - MYSQLCONNSTR_localdb=db=test;HOST=mariadb;user=test;password=test
+      networks:
+        - heldnodig
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
+networks:
+  heldnodig:
+    driver: bridge
