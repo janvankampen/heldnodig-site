@@ -1,4 +1,5 @@
 <?php
+
 class HeldNodig
 {
 	function __construct() {
@@ -248,4 +249,3 @@ class HeldNodig
 	}
 	
 }
-?>

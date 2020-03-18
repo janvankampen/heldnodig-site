@@ -1,9 +1,6 @@
 <?php
-	spl_autoload_register(function ($class_name) {
-	    include 'classes/'.$class_name . '.php';
-	});
-	
 	require_once 'vendor/autoload.php';
+
 	$loader = new Twig_Loader_Filesystem('html');
 	$twig = new Twig_Environment($loader, []);
 	
@@ -16,4 +13,3 @@
 		echo '<script> window.location.href = "'.$location.'"; </script>';
 		exit();
 	}
-?>
