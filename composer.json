@@ -1,5 +1,16 @@
 {
+    "name": "heldnodig-site",
+    "type": "project",
+    "description": "The source code of Heldnodig site",
     "require": {
         "twig/twig": "^2.0"
-    }
+    },
+    "autoload": {
+        "classmap": ["classes/", "classes/generated"]
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true
 }
