@@ -13,8 +13,11 @@
 		$x = $r->getTwig();
 		$x['Category'] = $r->getCategory()->getName();
 		
-		
-		array_push($closedRequests, $x);
+		$closedRequests[] = $x;
 	}
 			
-	echo $twig->render('homepage.html', ["openRequests"=>$openRequests,"closedRequests"=>$closedRequests,"city"=>$_GET['city'] ?? '']);
+	echo $twig->render('homepage.html', [
+	    'openRequests' => $openRequests,
+        'closedRequests' => $closedRequests,
+        'city' => $_GET['city'] ?? ''
+    ]);
