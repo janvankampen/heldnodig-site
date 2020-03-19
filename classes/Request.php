@@ -1,11 +1,5 @@
 <?php
 
-if($_SERVER['SERVER_NAME']!='localhost'){
-include('/home/site/wwwroot/classes/generated/Request.php');
-}else{
-include('/Applications/MAMP/htdocs/heldnodig/classes/generated/Request.php');
-}
-		
 class Request extends Request_generated
 {
 
@@ -28,4 +22,3 @@ class Request extends Request_generated
 	}
 	
 }
-?>
