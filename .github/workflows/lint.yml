@@ -2,7 +2,14 @@ on: [push, pull_request]
 name: Main
 jobs:
   php-cs-fixer:
-  - name: PHP CS Fixer
-    uses: StephaneBour/actions-php-cs-fixer@1.0
-    with:
-      dir: './'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: PHP CS Fixer
+        uses: StephaneBour/actions-php-cs-fixer@1.0
+        with:
+          dir: './'
