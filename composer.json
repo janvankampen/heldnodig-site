@@ -3,7 +3,8 @@
     "type": "project",
     "description": "The source code of Heldnodig site",
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "vlucas/phpdotenv": "^4.1"
     },
     "autoload": {
         "classmap": ["classes/", "classes/generated"]
