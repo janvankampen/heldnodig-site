@@ -3,66 +3,80 @@
 {% block content %}
 	<div class="row">
 		<div class="col-md-12">
-		<h2>Nieuw hulpverzoek</h2><br>
-					<p>
-				<a href="index.php">< Terug naar de homepage</a>
-			</p>
+		<h1>Nieuw hulpverzoek</h1><br>
+		<p>
+			<a href="index.php">< Terug naar de homepage</a>
+		</p>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-md-5">
 		<form method="post">
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Voornaam</label>
-		    <input type="text" class="form-control" name="firstname" placeholder="Piet" required="">
-		  </div>
+		    <label for="firstname">Voornaam</label>
+		    <input id="firstname" type="text" class="form-control" name="firstname" placeholder="Piet" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Achternaam</label>
-		    <input type="text" class="form-control" name="lastname" placeholder="Paulusma" required="">
-		  </div>
+		    <label for="lastname">Achternaam</label>
+		    <input id="lastname" type="text" class="form-control" name="lastname" placeholder="Paulusma" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Postcode</label>
-		    <input type="text" class="form-control" name="zipcode" placeholder="1234AB" required="">
-		  </div>
+		    <label for="zipcode">Postcode</label>
+		    <input id="zipcode" type="text" class="form-control" name="zipcode" placeholder="1234AB" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">E-mailadres</label>
-		    <input type="email" class="form-control" name="mail" placeholder="piet@paulusma.com" required="">
-		  </div>
+		    <label for="mail">E-mailadres</label>
+		    <input id="mail" type="email" class="form-control" name="mail" placeholder="piet@paulusma.com" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Telefoonnummer</label>
-		    <input type="phone" class="form-control" name="phone" placeholder="0612345678" required="">
-		  </div>
+		    <label for="phone">Telefoonnummer</label>
+		    <input id="phone" type="phone" class="form-control" name="phone" placeholder="0612345678" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlSelect2">Categorie</label>
-		    <select class="form-control" id="exampleFormControlSelect2" name="categoryId" required="">
+		    <label for="category">Categorie</label>
+		    <select id="category" class="form-control" name="categoryId" required="">
 		      <option></option>
 			  {% for category in categories %}
 			  <option value="{{ category.Id }}">{{ category.Name }}</option>
 			  {% endfor %}
 		    </select>
-		  </div>
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlTextarea1">Je hulpvraag</label>
-		    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" required=""></textarea>
-		  </div>
+		    <label for="description">Je hulpvraag</label>
+		    <textarea id="description" class="form-control" rows="3" name="description" required=""></textarea>
+			</div>
+			
 		  <div class="g-recaptcha" data-sitekey="6LfvTOEUAAAAADCwQ8B23Gzp6DTnqfgpiAmRO1CX"></div>
 		  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-		  <br>
+			<br>
+			
 		  <h2>Veiligheid en omgang</h2>
 		  <p>Ga op een veilige manier met elkaar om. Volg de richtlijnen van het RIVM, en denk logisch na. Als je boodschappen voor iemand doet, lever ze dan 'contactloos' af bijvoorbeeld. Hou een veilige afstand om besmetting te voorkomen. Zonder de helden van dit platform, kunnen er namelijk geen hulpvragen opgelost worden.</p>
-		  <p>
+			
+			<p>
 			  Wees ook aardig voor elkaar. Je gaat zelf contact opnemen met mensen die hulp aanbieden. Het kan zo zijn dat iemand niet meteen reageert, of niet meteen aan je hulpvraag kan voldoen. Wij zorgen ervoor dat je altijd minimaal 3 helden in de mail krijgt. Als je er dus niet uitkomt met de een, komt er wellicht snel een ander die je kan helpen.
-		  </p>
-		  			  <p>
-				  HeldNodig.nl is niet verantwoordelijk voor de communicatie tussen de hulpvrager en de held, en wat daaruit voortvloeit. Wij verbinden de twee personen alleen. Als er toch een vervelende situatie voordoet, laat het dan weten via info@doodlesoft.nl, zodat wij kunnen nagaan of we deze persoon kunnen blokkeren.
-			  </p>
-		  <input type="checkbox" required=""> Ik ga zal veilig te werk gaan, en aardig blijven<br><br>
+			</p>
+			
+			<p>
+				HeldNodig.nl is niet verantwoordelijk voor de communicatie tussen de hulpvrager en de held, en wat daaruit voortvloeit. Wij verbinden de twee personen alleen. Als er toch een vervelende situatie voordoet, laat het dan weten via info@doodlesoft.nl, zodat wij kunnen nagaan of we deze persoon kunnen blokkeren.
+			</p>
+
+			<input id="safety" type="checkbox" required=""> 
+			<label for="safety">Ik ga zal veilig te werk gaan, en aardig blijven</label><br><br>
 
 		  <h2>Privacy</h2>
 		  <p>Gezien de tijdsdruk van dit project in deze crisis, heeft HeldNodig.nl geen eigen stichting. Alle data wordt opgeslagen bij Microsoft Azure in regio West-Europa. De verantwoordelijke voor het beheren van de data is Jan van Kampen (Contactgegevens: <a href="https://doodlesoft.nl" target="_blank">DoodleSoft</a>). Je mailadres en telefoonnummer worden met niemand gedeeld, en worden uitgevraagd voor het eventueel beoordelen en verifiëren van je hulpvraag.</p>
 		  <p>Na het cancelen of het afronden van het hulpverzoek wordt je data verwijderd. Alle data wordt ook verwijderd aan het eind van deze Corona-crisis of uiterlijk 01-06-2020. Je mag natuurlijk ook altijd contact opnemen via info@doodlesoft.nl als je wilt dat we data verwijderen.</p>
 		  
-		  <input type="checkbox" required=""> Ik ga akkoord met dit privacystatement<br><br>
+			<input id="privacy" type="checkbox" required=""> 
+			<label for="privacy">Ik ga akkoord met dit privacystatement</label><br><br>
 		  
 		  <button type="submit" class="btn btn-primary mb-2">Hulpverzoek versturen</button>
 		</form>

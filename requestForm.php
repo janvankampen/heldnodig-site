@@ -19,7 +19,7 @@
 			$error .= "Achternaam klopt niet. ";
 		}
 		
-		if(strlen($_POST['phone']) < 8)
+		if(strlen($_POST['phone']) < 8) {
 			$error .= "Telefoonnummer klopt niet. ";
 		}
 		
@@ -30,7 +30,7 @@
 		$_POST['zipcode'] = str_replace(" ", "", $_POST['zipcode']);
 		$_POST['zipcode'] = strtoupper($_POST['zipcode']);
 
-		if(strlen($_POST['zipcode'])!=6)
+		if(strlen($_POST['zipcode'])!=6) {
 			$error .= "Postcode klopt niet. ";
 		}
 		
