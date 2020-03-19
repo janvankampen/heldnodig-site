@@ -112,4 +112,3 @@ class Category_generated
     END OF GENERATED CODE
     */
 }
-?>
