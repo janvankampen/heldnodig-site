@@ -15,9 +15,9 @@
 		
 		$closedRequests[] = $x;
 	}
-			
-	echo $twig->render('homepage.html', [
-	    'openRequests' => $openRequests,
-        'closedRequests' => $closedRequests,
-        'city' => $_GET['city'] ?? ''
-    ]);
+
+  echo $twig->render('homepage.html', [
+    'openRequests' => $openRequests,
+    'closedRequests' => $closedRequests,
+    'city' => $_GET['city'] ?? ''
+  ]);
