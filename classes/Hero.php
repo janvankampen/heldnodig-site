@@ -1,11 +1,5 @@
 <?php
 
-if ($_SERVER['SERVER_NAME']!='localhost') {
-    include('/home/site/wwwroot/classes/generated/Hero.php');
-} else {
-    include('/Applications/MAMP/htdocs/heldnodig/classes/generated/Hero.php');
-}
-        
 class Hero extends Hero_generated
 {
     public function __construct($arg)
