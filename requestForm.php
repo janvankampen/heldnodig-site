@@ -6,7 +6,7 @@
 		array_push($categoriesTwig, $category->getTwig());
 	}
 	
-	if ($_SERVER['REQUEST_METHOD'] === 'POST'){		
+	if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$error = '';
 		
 		$_POST['firstname'] = trim($_POST['firstname']);
@@ -62,9 +62,7 @@
 			$HeldNodig->createRequest($_POST);
 			redirect("requestDone.php");
 		}
-
-		
 	}
 	
-	echo $twig->render('requestForm.html', ["categories"=>$categoriesTwig]);
+	echo $twig->render('requestForm.html', ["categories"=>$categoriesTwig, "captchaSiteKey"=>getenv("captchaSiteKey")]);
 ?>
