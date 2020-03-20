@@ -85,7 +85,10 @@ class HeldNodig
     {
         $query = "SELECT * FROM Hero WHERE (Mail=? AND IsVerifiedByMail=?) OR (Mail=? AND IsVerifiedByMail=? AND DateTimeCreated>?)";
         $stmt = $GLOBALS['database']->prepare($query);
-        $stmt->bind_param("sisis", $arg['mail'], 1, $arg['mail'], 0, date("Y-m-d H:i:s", time()-30*60));
+        // Can't pass in constants, variables to bind_param have to be passed by reference
+        $isverified = 1;
+        $isnotverified = 0;
+        $stmt->bind_param("sisis", $arg['mail'], $isverified, $arg['mail'], $isnotverified, date("Y-m-d H:i:s", time()-30*60));
         $stmt->execute();
         $result = $stmt->get_result();
             
