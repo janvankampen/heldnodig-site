@@ -19,7 +19,6 @@ Your environment is now in a state where you can edit the various php files, whe
 - Create a database and import `database.sql`
 - Copy `.env.example` to `.env` and fill out the required details
 
-
 ### Contributing
 
 If you want to contribute, but the php-cs-fixer check fails on your merge request:
