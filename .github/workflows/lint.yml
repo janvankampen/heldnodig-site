@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: PHP CS Fixer
         uses: StephaneBour/actions-php-cs-fixer@1.0
