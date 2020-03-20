@@ -55,13 +55,36 @@ class HeldNodig
         $guidPublic = $this->createGuid();
         
         $stmt = $GLOBALS['database']->prepare($query);
-        $stmt->bind_param("sssssssssi", $arg['zipcode'], $this->zipToCity($arg['zipcode']), $arg['firstname'], $arg['lastname'], $arg['mail'], $arg['phone'], $guidPublic, $guidPrivate, $arg['description'], intval($arg['categoryId']));
+        $city = '';
+        $categoryId = (int)$arg['categoryId'];
+        $stmt->bind_param(
+            "sssssssssi",
+            $arg['zipcode'],
+            $city,
+            $arg['firstname'],
+            $arg['lastname'],
+            $arg['mail'],
+            $arg['phone'],
+            $guidPublic,
+            $guidPrivate,
+            $arg['description'],
+            $categoryId
+        );
         $stmt->execute();
         $result = $stmt->get_result();
         
         $domain = getenv("domain");
-        
-        $this->sendMail($arg['mail'], "Verifieer je hulpvraag", "Beste ".$arg['firstname'].", onlangs is er een hulpvraag gepost op heldnodig.nl via dit mailadres. Klik op de link hieronder om deze te verifiëren.<br><br><a href='".$domain."/requestVerify.php?guid=".$privateGuid."'>".$domain."/requestVerify.php?guid=".$privateGuid."</a><br><br>Met vriendelijke groet,<br>HeldNodig.nl");
+        $message = sprintf(
+            'Beste %s, Onlangs is er een hulpvraag gepost op heldnodig.nl via dit mailadres. Klik op de link hieronder om deze te verifiëren.
+                    <br><br><a href="%s/requestVerify.php?guid="%s">%s/requestVerify.php?guid=%s</a><br><br>Met vriendelijke groet,<br>HeldNodig.nl',
+            $arg['firstname'],
+            $guidPrivate,
+            'huh',
+            $guidPrivate,
+            'huh'
+        );
+
+        $this->sendMail($arg['mail'], 'Verifieer je hulpvraag', $message);
     }
     
     public function createOffer($arg, $request)
@@ -187,7 +210,7 @@ class HeldNodig
     {
         $openRequests = array();
         $query = "SELECT * FROM Request WHERE IsCanceled=0 AND IsActive=1 AND IsAccepted=1";
-        
+
         if ($city!=null) {
             $query .= " AND LocationCity=?";
         }
