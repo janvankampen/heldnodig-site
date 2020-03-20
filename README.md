@@ -1,5 +1,6 @@
 ## Heldnodig.nl source
 
+Through this tool, people can ask for help from a heroe nearby. Whether it concerns groceries or babysitting. Everything is possible, as long as it contributes to the goal of protecting vulnerable people and keeping people at work in important vital professions.
 
 ### Docker install/run
 
@@ -20,6 +21,7 @@ Your environment is now in a state where you can edit the various php files, whe
 
 
 ### Contributing
+
 If you want to contribute, but the php-cs-fixer check fails on your merge request:
 - Download [php-cs-fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
 - Run it with `php-cs-fixer fix -v .`, this will auto fix all the linting issues  
