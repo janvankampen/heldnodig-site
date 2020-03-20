@@ -3,12 +3,13 @@
 {% block content %}
 	<div class="row">
 		<div class="col-md-12">
-		<h2>Inschrijven als held</h2><br>
-					<p>
+		<h1>Inschrijven als held</h1><br>
+			<p>
 				<a href="index.php">< Terug naar de homepage</a>
 			</p>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-md-5">
 		<p>
@@ -19,17 +20,20 @@
 		</p>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-md-5">
 		<form method="post">
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">Postcode</label>
-		    <input type="text" class="form-control" name="zipcode" placeholder="1234AB" required="">
-		  </div>
+		    <label for="zipcode-input">Postcode</label>
+		    <input id="zipcode-input" type="text" class="form-control" name="zipcode" placeholder="1234AB" required="">
+			</div>
+			
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">E-mailadres</label>
-		    <input type="email" class="form-control" name="mail" placeholder="piet@paulusma.com" required="">
-		  </div>
+		    <label for="email-input">E-mailadres</label>
+		    <input id="email-input" type="email" class="form-control" name="mail" placeholder="piet@paulusma.com" required="">
+			</div>
+			
 		  <div class="g-recaptcha" data-sitekey="6LfvTOEUAAAAADCwQ8B23Gzp6DTnqfgpiAmRO1CX"></div>
 		  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		  <br>
@@ -38,7 +42,7 @@
 		  <p>Gezien de tijdsdruk van dit project in deze crisis, heeft HeldNodig.nl geen eigen stichting. Alle data wordt opgeslagen bij Microsoft Azure in regio West-Europa. De verantwoordelijke voor het beheren van de data is Jan van Kampen (Contactgegevens: <a href="https://doodlesoft.nl" target="_blank">DoodleSoft</a>). Je mailadres wordt met niemand gedeeld. We gebruiken je mailadres om maximaal 3 keer per dag een relevant hulpverzoek te mailen, maar uiteraard proberen we dat te beperken tot het absolute minimum.</p>
 		  <p>Alle data wordt verwijderd aan het eind van deze Corona-crisis of uiterlijk 01-06-2020. Je mag natuurlijk ook altijd contact opnemen via info@doodlesoft.nl als je wilt dat we data verwijderen.</p>
 		  
-		  <input type="checkbox" required=""> Ik ga akkoord met dit privacystatement<br><br>
+		  <input id="privacy" type="checkbox" name="privacy" required=""> <label for="privacy">Ik ga akkoord met dit privacystatement</label><br><br>
 		  
 		  <button type="submit" class="btn btn-primary mb-2">Inschrijven als held</button>
 		</form>
