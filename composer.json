@@ -3,6 +3,7 @@
     "type": "project",
     "description": "The source code of Heldnodig site",
     "require": {
+        "doctrine/orm": "^2.7",
         "twig/twig": "^2.0",
         "vlucas/phpdotenv": "^4.1"
     },
