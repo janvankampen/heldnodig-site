@@ -1,6 +1,5 @@
 <?php
-	require("header.php");
-	
-	
-	echo $twig->render('heroDone.html', []);
-?>
+    require("header.php");
+    
+    
+    echo $twig->render('heroDone.html', []);
