@@ -36,11 +36,7 @@
 			$HeldNodig->createHero($_POST);
 			redirect("heroDone.php");
 		}
-
-		
 	}
 	
-
-	
-	echo $twig->render('heroForm.html', []);
+	echo $twig->render('heroForm.html', ["captchaSiteKey"=>getenv("captchaSiteKey")]);
 ?>
