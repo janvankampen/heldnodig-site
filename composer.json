@@ -4,14 +4,18 @@
     "description": "The source code of Heldnodig site",
     "require": {
         "twig/twig": "^2.0",
-        "vlucas/phpdotenv": "^4.1"
+        "vlucas/phpdotenv": "^4.1",
+        "php": "^7.1.3"
     },
     "autoload": {
         "classmap": ["classes/", "classes/generated"]
     },
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.3.0"
+        }
     },
     "prefer-stable": true
 }
