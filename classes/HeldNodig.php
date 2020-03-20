@@ -78,10 +78,10 @@ class HeldNodig
             'Beste %s, Onlangs is er een hulpvraag gepost op heldnodig.nl via dit mailadres. Klik op de link hieronder om deze te verifiëren.
                     <br><br><a href="%s/requestVerify.php?guid="%s">%s/requestVerify.php?guid=%s</a><br><br>Met vriendelijke groet,<br>HeldNodig.nl',
             $arg['firstname'],
+            $domain,
             $guidPrivate,
-            'huh',
-            $guidPrivate,
-            'huh'
+            $domain,
+            $guidPrivate
         );
 
         $this->sendMail($arg['mail'], 'Verifieer je hulpvraag', $message);
