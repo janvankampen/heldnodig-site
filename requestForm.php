@@ -3,7 +3,7 @@
     
     $categoriesTwig = array();
     foreach ($HeldNodig->getCategories() as $category) {
-        array_push($categoriesTwig, $category->getTwig());
+        $categoriesTwig[] = $category->getTwig();
     }
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
