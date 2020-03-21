@@ -64,7 +64,7 @@
             ];
         }
         
-        if (count($errors) === 0 ) {
+        if (count($errors) === 0) {
             $HeldNodig->createOffer($_POST, $request);
             redirect('offerDone.php');
         }
