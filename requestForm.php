@@ -24,18 +24,18 @@
         }
         
         if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-            $error .= "E-mailadres klopt niet. ";
+            $error .= 'E-mailadres klopt niet. ';
         }
         
         $_POST['zipcode'] = str_replace(" ", "", $_POST['zipcode']);
         $_POST['zipcode'] = strtoupper($_POST['zipcode']);
 
         if (strlen($_POST['zipcode'])!=6) {
-            $error .= "Postcode klopt niet. ";
+            $error .= 'Postcode klopt niet. ';
         }
         
         if (strlen($_POST['description']) < 5) {
-            $error .= "Omschrijving klopt niet. ";
+            $error .= 'Je omschrijving moet meer dan 5 tekens zijn';
         }
         
         $validCategory = false;
@@ -108,4 +108,7 @@
         }
     }
     
-    echo $twig->render('requestForm.html', ["categories"=>$categoriesTwig, "captchaSiteKey"=>getenv("captchaSiteKey")]);
+    echo $twig->render('requestForm.html', [
+        'categories' => $categoriesTwig,
+        'captchaSiteKey' => getenv('captchaSiteKey')
+    ]);

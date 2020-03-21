@@ -2,6 +2,7 @@
     require("header.php");
     
     $openRequests = array();
+
     foreach ($HeldNodig->getOpenRequests($_GET['city'] ?? '') as $r) {
         $x = $r->getTwig();
         $x['Category'] = $r->getCategory()->getName();
