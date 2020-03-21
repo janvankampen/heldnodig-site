@@ -61,6 +61,18 @@
             ];
         }
 
+        if (!isset($_POST['safety-check'])) {
+            $errors['safety-check'] = [
+                'errors' => ['Je moet akkoord gaan']
+            ];
+        }
+
+        if (!isset($_POST['privacystatement'])) {
+            $errors['privacystatement'] = [
+                'errors' => ['Je moet akkoord gaan']
+            ];
+        }
+
         if (($_POST['g-recaptcha-response'] ?? null) !== null) {
             if ($HeldNodig->validateCaptcha($_POST['g-recaptcha-response'])===false) {
                 $errors['g-recaptcha-response'] = [
