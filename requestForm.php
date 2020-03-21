@@ -40,7 +40,7 @@
 
         $validCategory = false;
         foreach ($categoriesTwig as $c) {
-            if ($c['Id']==intval($_POST['categoryId'])) {
+            if ($c['Id'] === (int)$_POST['categoryId']) {
                 $validCategory = true;
             }
         }
