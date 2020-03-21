@@ -1,5 +1,8 @@
 <?php
 
+use Http\Adapter\Guzzle6\Client;
+use Swis\Geocoder\NationaalGeoregister\NationaalGeoregister;
+
 class HeldNodig
 {
     public function __construct()
@@ -53,7 +56,6 @@ class HeldNodig
         
         $guidPrivate = $this->createGuid();
         $guidPublic = $this->createGuid();
-
         $city = $this->zipToCity($arg['zipcode']);
 
         $stmt = $GLOBALS['database']->prepare($query);
@@ -266,18 +268,22 @@ class HeldNodig
         return $result['success'];
     }
 
-    public function zipToCity($zipCode)
+    public function zipToCity(string $zipCode): ?string
     {
         // Create geocoder
-        $client = new \Http\Adapter\Guzzle6\Client();
-        $geocoder = new \Swis\Geocoder\NationaalGeoregister\NationaalGeoregister($client);
+        $client = new Client();
+        $geocoder = new NationaalGeoregister($client);
 
         // Geocode!
         $query = \Geocoder\Query\GeocodeQuery::create($zipCode);
         /** @var Geocoder\Model\AddressCollection $result */
         $result = $geocoder->geocodeQuery($query);
-        $address = $result->get(0);
 
+        if ($result->isEmpty()) {
+            return null;
+        }
+
+        $address = $result->get(0);
         return $address->getLocality();
     }
 }
