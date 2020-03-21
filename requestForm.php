@@ -11,31 +11,43 @@
 
         $_POST['firstname'] = trim($_POST['firstname'] ?? '');
         if (strlen($_POST['firstname'] ?? '') === 0) {
-            $error .= 'Voornaam klopt niet. ';
+            $errors['firstname'] = [
+                'errors' => ['Voornaam is te kort.']
+            ];
         }
 
         $_POST['lastname'] = trim($_POST['lastname'] ?? '');
         if (strlen($_POST['lastname'] ?? '') === 0) {
-            $error .= 'Achternaam klopt niet. ';
+            $errors['lastname'] = [
+                'errors' => ['Achternaam is te kort.']
+            ];
         }
 
         if (strlen($_POST['phone'] ?? '') < 8) {
-            $error .= 'Telefoonnummer klopt niet. ';
+            $errors['phone'] = [
+                'errors' => ['Telefoonnummer is te kort.']
+            ];
         }
 
         if (!filter_var($_POST['mail'] ?? '', FILTER_VALIDATE_EMAIL)) {
-            $error .= 'E-mailadres klopt niet. ';
+            $errors['mail'] = [
+                'errors' => ['E-mailadres klopt niet.']
+            ];
         }
 
         $_POST['zipcode'] = str_replace(' ', '', $_POST['zipcode'] ?? '');
         $_POST['zipcode'] = strtoupper($_POST['zipcode']);
 
         if (strlen($_POST['zipcode'] ?? '') !== 6) {
-            $error .= 'Postcode klopt niet. ';
+            $errors['zipcode'] = [
+                'errors' => ['Postcode klopt niet.']
+            ];
         }
 
         if (strlen($_POST['description'] ?? '') < 5) {
-            $error .= 'Omschrijving klopt niet. ';
+            $errors['description'] = [
+                'errors' => ['Omschrijving is te kort.']
+            ];
         }
 
         $validCategory = false;
@@ -45,15 +57,21 @@
             }
         }
         if ($validCategory === false) {
-            $error .= 'Categorie fout. ';
+            $errors['categoryId'] = [
+                'errors' => ['Categorie fout.']
+            ];
         }
 
         if (($_POST['g-recaptcha-response'] ?? null) !== null) {
             if ($HeldNodig->validateCaptcha($_POST['g-recaptcha-response'])===false) {
-                $error .= 'Captcha validatie fout. ';
+                $errors['g-recaptcha-response'] = [
+                    'errors' => ['Captcha validatie fout.']
+                ];
             }
         } else {
-            $error .= 'Captcha fout. ';
+            $errors['g-recaptcha-response'] = [
+                'errors' => ['Captcha fout.']
+            ];
         }
 
         // If errors array is empty, then we can continue
