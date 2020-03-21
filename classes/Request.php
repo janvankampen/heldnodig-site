@@ -11,7 +11,9 @@ class Request extends Request_generated
     {
         $query = "SELECT * FROM Offer WHERE RequestId=? AND ((IsVerifiedByMail=? AND IsAccepted IS NULL) OR (IsAccepted=?))";
         $stmt = $GLOBALS['database']->prepare($query);
-        $stmt->bind_param("iii", $request->getId(), 1, 1);
+        $isverified = 1;
+        $isaccepted = 1;
+        $stmt->bind_param("iii", $request->getId(), $isverified, $isaccepted);
         $stmt->execute();
         $result = $stmt->get_result();
         $amountOfOffers = $result->num_rows;

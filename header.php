@@ -1,8 +1,8 @@
 <?php
     require_once 'vendor/autoload.php';
 
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->load();
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
     $loader = new Twig\Loader\FilesystemLoader('html');
     $twig = new Twig\Environment($loader, []);
