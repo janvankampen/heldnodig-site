@@ -5,7 +5,7 @@
  */
 class Zipcode
 {
-    public CONST NL_ZIP_VALIDATION_REGEX = '/^[0-9]{4}[a-zA-Z]{2}$/';
+    public const NL_ZIP_VALIDATION_REGEX = '/^[0-9]{4}[a-zA-Z]{2}$/';
     private $code;
 
     public function __construct(string $code)
