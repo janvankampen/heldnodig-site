@@ -3,7 +3,8 @@
 /**
  * Value type wrapping validation logic for zipcode.
  */
-class Zipcode {
+class Zipcode
+{
     public CONST NL_ZIP_VALIDATION_REGEX = '/^[0-9]{4}[a-zA-Z]{2}$/';
     private $code;
 
