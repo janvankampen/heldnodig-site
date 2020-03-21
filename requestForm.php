@@ -5,10 +5,10 @@
     foreach ($HeldNodig->getCategories() as $category) {
         $categoriesTwig[] = $category->getTwig();
     }
-    
+
+    $errors = [];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $error = '';
-        
+
         $_POST['firstname'] = trim($_POST['firstname'] ?? '');
         if (strlen($_POST['firstname'] ?? '') === 0) {
             $error .= 'Voornaam klopt niet. ';
@@ -55,10 +55,9 @@
         } else {
             $error .= 'Captcha fout. ';
         }
-        
-        if ($error !== null) {
-            echo $error;
-        } else {
+
+        // If errors array is empty, then we can continue
+        if (count($errors) === 0) {
             $HeldNodig->createRequest($_POST);
             redirect('requestDone.php');
         }
@@ -66,5 +65,7 @@
     
     echo $twig->render('requestForm.html.twig', [
         'categories' => $categoriesTwig,
-        'captchaSiteKey' => getenv('captchaSiteKey')
+        'captchaSiteKey' => getenv('captchaSiteKey'),
+        'errors' => $errors,
+        'form' => $_POST
     ]);
