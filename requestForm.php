@@ -9,32 +9,32 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = '';
         
-        $_POST['firstname'] = trim($_POST['firstname']);
-        if (strlen($_POST['firstname']) == 0) {
+        $_POST['firstname'] = trim($_POST['firstname'] ?? '');
+        if (strlen($_POST['firstname'] ?? '') === 0) {
             $error .= 'Voornaam klopt niet. ';
         }
 
-        $_POST['lastname'] = trim($_POST['lastname']);
-        if (strlen($_POST['lastname']) == 0) {
+        $_POST['lastname'] = trim($_POST['lastname'] ?? '');
+        if (strlen($_POST['lastname'] ?? '') === 0) {
             $error .= 'Achternaam klopt niet. ';
         }
 
-        if (strlen($_POST['phone']) < 8) {
+        if (strlen($_POST['phone'] ?? '') < 8) {
             $error .= 'Telefoonnummer klopt niet. ';
         }
 
-        if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($_POST['mail'] ?? '', FILTER_VALIDATE_EMAIL)) {
             $error .= 'E-mailadres klopt niet. ';
         }
 
-        $_POST['zipcode'] = str_replace(' ', '', $_POST['zipcode']);
+        $_POST['zipcode'] = str_replace(' ', '', $_POST['zipcode'] ?? '');
         $_POST['zipcode'] = strtoupper($_POST['zipcode']);
 
-        if (strlen($_POST['zipcode']) !=6) {
+        if (strlen($_POST['zipcode'] ?? '') !== 6) {
             $error .= 'Postcode klopt niet. ';
         }
 
-        if (strlen($_POST['description']) < 5) {
+        if (strlen($_POST['description'] ?? '') < 5) {
             $error .= 'Omschrijving klopt niet. ';
         }
 
@@ -44,11 +44,11 @@
                 $validCategory = true;
             }
         }
-        if ($validCategory===false) {
+        if ($validCategory === false) {
             $error .= 'Categorie fout. ';
         }
 
-        if ($_POST['g-recaptcha-response']!=null) {
+        if (($_POST['g-recaptcha-response'] ?? null) !== null) {
             if ($HeldNodig->validateCaptcha($_POST['g-recaptcha-response'])===false) {
                 $error .= 'Captcha validatie fout. ';
             }
@@ -56,7 +56,7 @@
             $error .= 'Captcha fout. ';
         }
         
-        if ($error!=null) {
+        if ($error !== null) {
             echo $error;
         } else {
             $HeldNodig->createRequest($_POST);
