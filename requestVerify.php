@@ -19,5 +19,5 @@
     
     
     echo $twig->render('requestVerify.html', [
-        "request" => $request->getTwig()
+        'request' => $request->getTwig()
     ]);
