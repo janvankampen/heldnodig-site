@@ -11,4 +11,4 @@
     }
     
     
-    echo $twig->render('heroVerify.html', ["hero"=>$hero->getTwig()]);
+    echo $twig->render('heroVerify.html.twig', ["hero"=>$hero->getTwig()]);

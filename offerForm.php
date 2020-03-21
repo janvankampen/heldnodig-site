@@ -50,4 +50,4 @@
     $requestTwig = $request->getTwig();
     $requestTwig['Category'] = $request->getCategory()->getName();
     
-    echo $twig->render('offerForm.html', ["request"=>$requestTwig]);
+    echo $twig->render('offerForm.html.twig', ["request"=>$requestTwig]);

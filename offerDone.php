@@ -2,4 +2,4 @@
     require("header.php");
     
     
-    echo $twig->render('offerDone.html', []);
+    echo $twig->render('offerDone.html.twig', []);

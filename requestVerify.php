@@ -18,4 +18,4 @@
     }
     
     
-    echo $twig->render('requestVerify.html', ["request"=>$request->getTwig()]);
+    echo $twig->render('requestVerify.html.twig', ["request"=>$request->getTwig()]);
