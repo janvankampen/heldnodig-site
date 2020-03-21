@@ -3,9 +3,12 @@
     "type": "project",
     "description": "The source code of Heldnodig site",
     "require": {
+        "php": "^7.3.0",
+        "php-http/guzzle6-adapter": "^2.0",
+        "php-http/httplug-pack": "^1.2",
+        "swisnl/geocoder-php-nationaal-georegister-provider": "^1.2",
         "twig/twig": "^2.0",
-        "vlucas/phpdotenv": "^4.1",
-        "php": "^7.3.0"
+        "vlucas/phpdotenv": "^4.1"
     },
     "autoload": {
         "classmap": ["classes/", "classes/generated"]
