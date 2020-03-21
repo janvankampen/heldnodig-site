@@ -241,7 +241,7 @@ class HeldNodig
         $postdata = http_build_query(
             array(
                 'response' => $code,
-                'secret' => getenv("captchaSecret")
+                'secret' => getenv("CAPTCHA_SECRET")
             )
         );
         

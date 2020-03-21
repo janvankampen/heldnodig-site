@@ -7,7 +7,7 @@
     $loader = new Twig\Loader\FilesystemLoader('html');
     $twig = new Twig\Environment($loader, []);
 
-    $connectionString = explode(";", getenv("MYSQLCONNSTR_localdb"));
+    $connectionString = explode(";", getenv("MYSQL_CONNECTION_STRING"));
     $database = mysqli_connect(explode("=", $connectionString[1])[1], explode("=", $connectionString[2])[1], explode("=", $connectionString[3])[1], explode("=", $connectionString[0])[1]);
 
     $HeldNodig = new HeldNodig();

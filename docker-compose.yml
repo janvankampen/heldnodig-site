@@ -33,7 +33,11 @@ services:
       container_name: test-php-fpm
       working_dir: /application
       environment:
-        - MYSQLCONNSTR_localdb=db=test;HOST=mariadb;user=test;password=test
+        - MYSQL_CONNECTION_STRING="db=test;HOST=mariadb;user=test;password=test"
+        - CAPTCHA_SECRET="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+        - CAPTCHA_SITE_KEY="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+        - ENVIRONMENT="dev"
+        - AUTO_REVIEW="1"
       networks:
         - heldnodig
       volumes:

@@ -38,4 +38,6 @@
     
 
     
-    echo $twig->render('heroForm.html', ["captchaSiteKey"=>getenv("captchaSiteKey")]);
+    echo $twig->render('heroForm.html', [
+        'recaptchaSiteKey' => getenv('CAPTCHA_SITE_KEY')
+    ]);
