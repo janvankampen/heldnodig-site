@@ -8,7 +8,6 @@
 
     $errors = [];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
         $_POST['firstname'] = trim($_POST['firstname'] ?? '');
         if (strlen($_POST['firstname'] ?? '') === 0) {
             $errors['firstname'] = [
