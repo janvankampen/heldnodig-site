@@ -9,7 +9,7 @@
     if ($_POST['verify']==="1") {
         $request->setIsVerifiedByMail(1);
         
-        if (getenv("autoreview")==="1") {
+        if (getenv('AUTO_REVIEW') === '1') {
             $request->setIsAccepted(1);
             $request->setDateTimeReviewed(date("Y-m-d H:i:s"));
             $request->setReviewedBy("System");

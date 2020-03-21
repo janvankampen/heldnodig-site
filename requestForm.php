@@ -108,4 +108,7 @@
         }
     }
     
-    echo $twig->render('requestForm.html', ["categories"=>$categoriesTwig, "captchaSiteKey"=>getenv("captchaSiteKey")]);
+    echo $twig->render('requestForm.html', [
+        'categories' => $categoriesTwig,
+        'recaptchaSiteKey' => getenv('CAPTCHA_SITE_KEY')
+    ]);
