@@ -1,4 +1,13 @@
 <?php
+    /**
+     * Uncomment the next lines for debug.
+     * Don forget to reset them when checking in
+     * to git!
+     */
+
+    //ini_set('display_errors', 1);
+    //ini_set('display_startup_errors', 1);
+    //error_reporting(E_ALL);
     require("header.php");
     
     $openRequests = array();

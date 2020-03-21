@@ -1,8 +1,17 @@
 <?php
     require_once 'vendor/autoload.php';
 
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->load();
+    /* Try to load .env file. 
+     * 
+     * If it fails, assume regular ENV variables 
+     * will be declared elsewhere 
+     */
+    try {
+      $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+      $dotenv->load();
+    } catch (Dotenv\Exception\InvalidPathException $e) {
+      error_log("dotenv could not find .env file, resuming operation",0);
+    }
 
     $loader = new Twig\Loader\FilesystemLoader('html');
     $twig = new Twig\Environment($loader, []);
