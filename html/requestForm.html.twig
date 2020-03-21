@@ -17,120 +17,120 @@
                     {% set firstnameIsInvalid = errors.firstname is defined %}
                     <label for="firstname">Voornaam</label>
                     <input id="firstname"
-						   type="text"
-						   class="form-control{{ firstnameIsInvalid ? ' is-invalid' }}"
-						   name="firstname"
-						   placeholder="Piet"
-							{{ form.firstname is defined ? ('value="' ~ form.firstname ~ '"')|raw }}
+                           type="text"
+                           class="form-control{{ firstnameIsInvalid ? ' is-invalid' }}"
+                           name="firstname"
+                           placeholder="Piet"
+                            {{ form.firstname is defined ? ('value="' ~ form.firstname ~ '"')|raw }}
                            required="">
-					{% if firstnameIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.firstname.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if firstnameIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.firstname.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set lastnameIsInvalid = errors.lastname is defined %}
+                    {% set lastnameIsInvalid = errors.lastname is defined %}
                     <label for="lastname">Achternaam</label>
                     <input id="lastname"
-						   type="text"
-						   class="form-control{{ lastnameIsInvalid ? ' is-invalid' }}"
-						   name="lastname"
-						   placeholder="Paulusma"
-							{{ form.lastname is defined ? ('value="' ~ form.lastname ~ '"')|raw }}
+                           type="text"
+                           class="form-control{{ lastnameIsInvalid ? ' is-invalid' }}"
+                           name="lastname"
+                           placeholder="Paulusma"
+                            {{ form.lastname is defined ? ('value="' ~ form.lastname ~ '"')|raw }}
                            required="">
-					{% if lastnameIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.lastname.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if lastnameIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.lastname.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set zipcodeIsInvalid = errors.zipcode is defined %}
+                    {% set zipcodeIsInvalid = errors.zipcode is defined %}
                     <label for="zipcode">Postcode</label>
                     <input id="zipcode"
-						   type="text"
-						   class="form-control{{ zipcodeIsInvalid ? ' is-invalid' }}"
-						   name="zipcode"
-						   placeholder="1234AB"
-							{{ form.zipcode is defined ? ('value="' ~ form.zipcode ~ '"')|raw }}
+                           type="text"
+                           class="form-control{{ zipcodeIsInvalid ? ' is-invalid' }}"
+                           name="zipcode"
+                           placeholder="1234AB"
+                            {{ form.zipcode is defined ? ('value="' ~ form.zipcode ~ '"')|raw }}
                            required="">
-					{% if zipcodeIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.zipcode.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if zipcodeIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.zipcode.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set mailIsInvalid = errors.mail is defined %}
+                    {% set mailIsInvalid = errors.mail is defined %}
                     <label for="mail">E-mailadres</label>
                     <input id="mail"
-						   type="email"
-						   class="form-control{{ mailIsInvalid ? ' is-invalid' }}"
-						   name="mail"
-						   placeholder="piet@paulusma.com"
-							{{ form.mail is defined ? ('value="' ~ form.mail ~ '"')|raw }}
+                           type="email"
+                           class="form-control{{ mailIsInvalid ? ' is-invalid' }}"
+                           name="mail"
+                           placeholder="piet@paulusma.com"
+                            {{ form.mail is defined ? ('value="' ~ form.mail ~ '"')|raw }}
                            required="">
-					{% if mailIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.mail.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if mailIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.mail.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set phoneIsInvalid = errors.phone is defined %}
+                    {% set phoneIsInvalid = errors.phone is defined %}
                     <label for="phone">Telefoonnummer</label>
                     <input id="phone"
-						   type="phone"
-						   class="form-control{{ phoneIsInvalid ? ' is-invalid' }}"
-						   name="phone"
-						   placeholder="0612345678"
-							{{ form.phone is defined ? ('value="' ~ form.phone ~ '"')|raw }}
+                           type="phone"
+                           class="form-control{{ phoneIsInvalid ? ' is-invalid' }}"
+                           name="phone"
+                           placeholder="0612345678"
+                            {{ form.phone is defined ? ('value="' ~ form.phone ~ '"')|raw }}
                            required="">
-					{% if phoneIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.phone.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if phoneIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.phone.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set categoryIsInvalid = errors.categoryId is defined %}
+                    {% set categoryIsInvalid = errors.categoryId is defined %}
                     <label for="category">Categorie</label>
                     <select id="category"
-							class="form-control{{ categoryIsInvalid ? ' is-invalid' }}"
-							name="categoryId"
-							required="">
+                            class="form-control{{ categoryIsInvalid ? ' is-invalid' }}"
+                            name="categoryId"
+                            required="">
                         <option></option>
                         {% for category in categories %}
                             <option value="{{ category.Id }}">{{ category.Name }}</option>
                         {% endfor %}
                     </select>
-					{% if categoryIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.categoryId.errors|join(' ') }}
-						</div>
-					{% endif %}
+                    {% if categoryIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.categoryId.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-					{% set descriptionIsInvalid = errors.description is defined %}
+                    {% set descriptionIsInvalid = errors.description is defined %}
                     <label for="description">Je hulpvraag</label>
                     <textarea id="description"
-							  class="form-control{{ descriptionIsInvalid ? ' is-invalid' }}"
-							  rows="3"
-							  name="description"
-							  required=""
-					>{{ form.description is defined ? form.description }}</textarea>
-					{% if descriptionIsInvalid %}
-						<div class="invalid-feedback">
-							{{ errors.description.errors|join(' ') }}
-						</div>
-					{% endif %}
+                              class="form-control{{ descriptionIsInvalid ? ' is-invalid' }}"
+                              rows="3"
+                              name="description"
+                              required=""
+                    >{{ form.description is defined ? form.description }}</textarea>
+                    {% if descriptionIsInvalid %}
+                        <div class="invalid-feedback">
+                            {{ errors.description.errors|join(' ') }}
+                        </div>
+                    {% endif %}
                 </div>
 
                 <div class="g-recaptcha" data-sitekey="{{ captchaSiteKey }}"></div>
@@ -157,20 +157,21 @@
                     kunnen blokkeren.
                 </p>
 
-				<div class="form-group">
-					<div class="form-check">
-						{% set safetyCheckIsInvalid = errors['safety-check'] is defined %}
-						<input class="form-check-input{{ safetyCheckIsInvalid ? ' is-invalid' }}" type="checkbox" id="safety-check" value="" name="safety-check" required>
-						<label class="form-check-label" for="safety-check">
-							Ik ga zal veilig te werk gaan, en aardig blijven
-						</label>
-						{% if safetyCheckIsInvalid %}
-							<div class="invalid-feedback">
-								{{ errors['safety-check'].errors|join(' ') }}
-							</div>
-						{% endif %}
-					</div>
-				</div>
+                <div class="form-group">
+                    <div class="form-check">
+                        {% set safetyCheckIsInvalid = errors['safety-check'] is defined %}
+                        <input class="form-check-input{{ safetyCheckIsInvalid ? ' is-invalid' }}" type="checkbox"
+                               id="safety-check" value="" name="safety-check" required>
+                        <label class="form-check-label" for="safety-check">
+                            Ik ga zal veilig te werk gaan, en aardig blijven
+                        </label>
+                        {% if safetyCheckIsInvalid %}
+                            <div class="invalid-feedback">
+                                {{ errors['safety-check'].errors|join(' ') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
 
                 <h2>Privacy</h2>
                 <p>Gezien de tijdsdruk van dit project in deze crisis, heeft HeldNodig.nl geen eigen stichting. Alle
@@ -183,20 +184,21 @@
                     verwijderd aan het eind van deze Corona-crisis of uiterlijk 01-06-2020. Je mag natuurlijk ook altijd
                     contact opnemen via info@doodlesoft.nl als je wilt dat we data verwijderen.</p>
 
-				<div class="form-group">
-					<div class="form-check">
-						{% set privacystatementIsInvalid = errors.privacystatement is defined %}
-						<input class="form-check-input{{ privacystatementIsInvalid ? ' is-invalid' }}" id="privacystatement" type="checkbox" value="" name="privacystatement" required>
-						<label class="form-check-label" for="privacystatement">
-							Ik ga akkoord met dit privacy statement
-						</label>
-						{% if privacystatementIsInvalid %}
-							<div class="invalid-feedback">
-								{{ errors.privacystatement.errors|join(' ') }}
-							</div>
-						{% endif %}
-					</div>
-				</div>
+                <div class="form-group">
+                    <div class="form-check">
+                        {% set privacystatementIsInvalid = errors.privacystatement is defined %}
+                        <input class="form-check-input{{ privacystatementIsInvalid ? ' is-invalid' }}"
+                               id="privacystatement" type="checkbox" value="" name="privacystatement" required>
+                        <label class="form-check-label" for="privacystatement">
+                            Ik ga akkoord met dit privacy statement
+                        </label>
+                        {% if privacystatementIsInvalid %}
+                            <div class="invalid-feedback">
+                                {{ errors.privacystatement.errors|join(' ') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary mb-2">Hulpverzoek versturen</button>
             </form>
