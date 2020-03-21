@@ -3,54 +3,79 @@
     
     $request = $HeldNodig->getRequestByPublicGuid($_GET['guid']);
     if ($request===false) {
-        redirect("/");
+        redirect('/');
     }
-    
+
+    $errors = [];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $error = '';
-        
         $_POST['firstname'] = trim($_POST['firstname']);
         if (strlen($_POST['firstname']) == 0) {
-            $error .= "Voornaam klopt niet. ";
+            $errors['firstname'] = [
+                'errors' => ['Voornaam is niet lang genoeg']
+            ];
         }
         
         $_POST['lastname'] = trim($_POST['lastname']);
         if (strlen($_POST['lastname']) == 0) {
-            $error .= "Achternaam klopt niet. ";
+            $errors['lastname'] = [
+                'errors' => ['Achternaam is niet lang genoeg']
+            ];
         }
         
         if (strlen($_POST['phone']) < 8) {
-            $error .= "Telefoonnummer klopt niet. ";
+            $errors['phone'] = [
+                'errors' => ['Telefoonnummer klopt niet']
+            ];
         }
         
         if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-            $error .= "E-mailadres klopt niet. ";
+            $errors['mail'] = [
+                'errors' => ['E-mailadres klopt niet']
+            ];
         }
         
         if (strlen($_POST['description']) < 5) {
-            $error .= "Omschrijving klopt niet. ";
+            $errors['description'] = [
+                'errors' => ['Omschrijving moet langer zijn dan 5 tekens']
+            ];
+        }
+
+        if (!isset($_POST['safety-check'])) {
+            $errors['safety-check'] = [
+                'errors' => ['Je moet akkoord gaan']
+            ];
+        }
+
+        if (!isset($_POST['privacystatement'])) {
+            $errors['privacystatement'] = [
+                'errors' => ['Je moet akkoord gaan']
+            ];
         }
         
-        if ($_POST['g-recaptcha-response']!=null) {
+        if (($_POST['g-recaptcha-response'] ?? null) !== null) {
             if ($HeldNodig->validateCaptcha($_POST['g-recaptcha-response'])===false) {
-                $error .= "Captcha validatie fout. ";
+                $errors['g-recaptcha-response'] = [
+                    'errors' => ['Captcha validatie fout.']
+                ];
             }
         } else {
-            $error .= "Captcha fout. ";
+            $errors['g-recaptcha-response'] = [
+                'errors' => ['Captcha fout.']
+            ];
         }
         
-        if ($error!='') {
-            echo $error;
-        } else {
+        if (count($errors) === 0 ) {
             $HeldNodig->createOffer($_POST, $request);
-            redirect("offerDone.php");
+            redirect('offerDone.php');
         }
     }
     
     $requestTwig = $request->getTwig();
     $requestTwig['Category'] = $request->getCategory()->getName();
-    
-    echo $twig->render('offerForm.html', [
+
+    echo $twig->render('offerForm.html.twig', [
         'request' => $requestTwig,
-        'captchaSiteKey' => getenv('captchaSiteKey')
+        'captchaSiteKey' => getenv('captchaSiteKey'),
+        'errors' => $errors,
+        'form' => $_POST
     ]);

@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Hulpvraag</h1>
+
+            <p>
+                <a href="index.php">< Terug naar de homepage</a>
+            </p>
+
+            <strong>Locatie:</strong><br>
+            {{ request.LocationZipcode }} {{ request.LocationCity }} (<a
+                    href="https://www.google.nl/maps/search/{{ request.LocationZipcode }}" target="_blank">Maps</a>)<br><br>
+
+            <strong>Categorie:</strong><br>
+            {{ request.Category }}<br><br>
+
+            <strong>Hulpvraag:</strong><br>
+            {{ request.Description }}<br><br>
+        </div>
+        <div class="col-md-4">
+            <h1>Aanbod</h1>
+            <form method="post" novalidate>
+                <div class="form-group">
+					{% set firstnameIsInvalid = errors.firstname is defined %}
+                    <label for="exampleFormControlInput1">Voornaam</label>
+                    <input type="text"
+						   class="form-control{{ firstnameIsInvalid ? ' is-invalid' }}"
+						   name="firstname"
+						   placeholder="Piet"
+						   {{ form.firstname is defined ? ('value="' ~ form.firstname ~ '"')|raw }}
+						   required
+					>
+					{% if firstnameIsInvalid %}
+						<div class="invalid-feedback">
+							{{ errors.firstname.errors|join(' ') }}
+						</div>
+					{% endif %}
+                </div>
+                <div class="form-group">
+					{% set lastnameIsInvalid = errors.lastname is defined %}
+                    <label for="exampleFormControlInput1">Achternaam</label>
+                    <input type="text"
+						   class="form-control{{ lastnameIsInvalid ? ' is-invalid' }}"
+						   name="lastname"
+						   placeholder="Paulusma"
+							{{ form.lastname is defined ? ('value="' ~ form.lastname ~ '"')|raw }}
+						   required
+					>
+					{% if lastnameIsInvalid %}
+						<div class="invalid-feedback">
+							{{ errors.lastname.errors|join(' ') }}
+						</div>
+					{% endif %}
+                </div>
+                <div class="form-group">
+					{% set mailIsInvalid = errors.mail is defined %}
+                    <label for="exampleFormControlInput1">E-mailadres</label>
+                    <input type="email"
+						   class="form-control{{ mailIsInvalid ? ' is-invalid' }}"
+						   name="mail"
+						   placeholder="piet@paulusma.com"
+							{{ form.mail is defined ? ('value="' ~ form.mail ~ '"')|raw }}
+						   required
+					>
+					{% if mailIsInvalid %}
+						<div class="invalid-feedback">
+							{{ errors.mail.errors|join(' ') }}
+						</div>
+					{% endif %}
+                </div>
+                <div class="form-group">
+					{% set phoneIsInvalid = errors.phone is defined %}
+                    <label for="exampleFormControlInput1">Telefoonnummer</label>
+                    <input type="phone"
+						   class="form-control{{ phoneIsInvalid ? ' is-invalid' }}"
+						   name="phone"
+							{{ form.phone is defined ? ('value="' ~ form.phone ~ '"')|raw }}
+						   placeholder="0612345678"
+						   required
+					>
+					{% if phoneIsInvalid %}
+						<div class="invalid-feedback">
+							{{ errors.phone.errors|join(' ') }}
+						</div>
+					{% endif %}
+                </div>
+                <div class="form-group">
+					{% set descriptionIsInvalid = errors.description is defined %}
+                    <label for="exampleFormControlTextarea1">Berichtje voor vrager</label>
+                    <textarea
+							class="form-control{{ descriptionIsInvalid ? ' is-invalid' }}"
+							id="exampleFormControlTextarea1"
+							rows="3"
+							name="description"
+							required
+					>{{ form.description is defined ? form.description }}</textarea>
+					{% if descriptionIsInvalid %}
+						<div class="invalid-feedback">
+							{{ errors.description.errors|join(' ') }}
+						</div>
+					{% endif %}
+                </div>
+				{% set recaptchaIsInvalid = errors['g-recaptcha-response'] is defined %}
+                <div class="g-recaptcha" data-sitekey="{{ captchaSiteKey }}"></div>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+				{% if recaptchaIsInvalid %}
+					<div class="invalid-feedback">
+						{{ errors['g-recaptcha-response'].errors|join(' ') }}
+					</div>
+				{% endif %}
+                <br>
+
+                <h2>Veiligheid en omgang</h2>
+                <p>Ga op een veilige manier met elkaar om. Volg de richtlijnen van het RIVM, en denk logisch na. Als je
+                    boodschappen voor iemand doet, lever ze dan 'contactloos' af bijvoorbeeld. Hou een veilige afstand
+                    om besmetting te voorkomen. Zonder de helden van dit platform, kunnen er namelijk geen hulpvragen
+                    opgelost worden.</p>
+                <p>
+                    Wees ook aardig voor elkaar. De hulpvrager gaat zelf contact met je opnemen indien nodig. Het kan zo
+                    zijn dat iemand niet meteen reageert. Ook kan het zijn dat iemand geen contact opneemt, want we
+                    laten altijd minimaal 3 reacties per hulpvraag toe. Dit kan betekenen dat een andere held al de
+                    vraag heeft opgepakt.</p>
+                <p>
+                    HeldNodig.nl is niet verantwoordelijk voor de communicatie tussen de hulpvrager en de held, en wat
+                    daaruit voortvloeit. Wij verbinden de twee personen alleen. Als er toch een vervelende situatie
+                    voordoet, laat het dan weten via info@doodlesoft.nl, zodat wij kunnen nagaan of we deze persoon
+                    kunnen blokkeren.
+                </p>
+				<div class="form-group">
+					<div class="form-check">
+						{% set safetyCheckIsInvalid = errors['safety-check'] is defined %}
+						<input class="form-check-input{{ safetyCheckIsInvalid ? ' is-invalid' }}" type="checkbox" id="safety-check" value="" name="safety-check" required>
+						<label class="form-check-label" for="safety-check">
+							Ik ga zal veilig te werk gaan, en aardig blijven
+						</label>
+						{% if safetyCheckIsInvalid %}
+							<div class="invalid-feedback">
+								{{ errors['safety-check'].errors|join(' ') }}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+
+                <h2>Privacy</h2>
+                <p>Gezien de tijdsdruk van dit project in deze crisis, heeft HeldNodig.nl geen eigen stichting. Alle
+                    data wordt opgeslagen bij Microsoft Azure in regio West-Europa. De verantwoordelijke voor het
+                    beheren van de data is Jan van Kampen (Contactgegevens: <a href="https://doodlesoft.nl"
+                                                                               target="_blank">DoodleSoft</a>). Je
+                    mailadres en telefoonnummer worden alleen met de hulpvrager gedeeld, en worden uitgevraagd voor het
+                    eventueel beoordelen en verifiëren van je aanbod.</p>
+                <p>Na het cancelen of het afronden van het hulpverzoek wordt je data verwijderd. Alle data wordt ook
+                    verwijderd aan het eind van deze Corona-crisis of uiterlijk 01-06-2020. Je mag natuurlijk ook altijd
+                    contact opnemen als je wilt dat we data verwijderen.</p>
+
+				<div class="form-group">
+					<div class="form-check">
+						{% set privacystatementIsInvalid = errors.privacystatement is defined %}
+						<input class="form-check-input{{ privacystatementIsInvalid ? ' is-invalid' }}" id="privacystatement" type="checkbox" value="" name="privacystatement" required>
+						<label class="form-check-label" for="privacystatement">
+							Ik ga akkoord
+						</label>
+						{% if privacystatementIsInvalid %}
+							<div class="invalid-feedback">
+								{{ errors.privacystatement.errors|join(' ') }}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+
+                <button type="submit" class="btn btn-primary mb-2">Aanbod versturen</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
