@@ -2,4 +2,4 @@
     require("header.php");
     
     
-    echo $twig->render('faq.html', []);
+    echo $twig->render('faq.html.twig', []);

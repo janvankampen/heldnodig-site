@@ -19,4 +19,4 @@
         $request->checkAmountOfOffers();
     }
     
-    echo $twig->render('offerVerify.html', ["offer"=>$offer->getTwig()]);
+    echo $twig->render('offerVerify.html.twig', ["offer"=>$offer->getTwig()]);
