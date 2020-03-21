@@ -55,7 +55,7 @@ class HeldNodig
         $guidPublic = $this->createGuid();
         
         $stmt = $GLOBALS['database']->prepare($query);
-        $stmt->bind_param("sssssssssi", $arg['zipcode'], $this->zipToCity($arg['zipcode']), $arg['firstname'], $arg['lastname'], $arg['mail'], $arg['phone'], $guidPublic, $guidPrivate, $arg['description'], intval($arg['categoryId']));
+        $stmt->bind_param("sssssssssi", $arg['zipcode'], (new ZipCode($arg['zipcode']))->ToCity(), $arg['firstname'], $arg['lastname'], $arg['mail'], $arg['phone'], $guidPublic, $guidPrivate, $arg['description'], intval($arg['categoryId']));
         $stmt->execute();
         $result = $stmt->get_result();
         
