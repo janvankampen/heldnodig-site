@@ -23,7 +23,7 @@ class Zipcode {
      * Mere stub, Wether this should really belong here can be questioned. But wanted to
      * prevent HeldNodig becoming even an bigger monolith.
      */
-    public static function ToCity(){
+    public function ToCity(){
         return null;
     }
 
