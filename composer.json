@@ -1,5 +1,5 @@
 {
-    "name": "heldnodig-site",
+    "name": "heldnodig/site",
     "type": "project",
     "description": "The source code of Heldnodig site",
     "require": {
