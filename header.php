@@ -32,9 +32,9 @@
     $driver = new AnnotationDriver($reader, $paths);
 
     $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-    $config->setMetadataCacheImpl( $cache );
-    $config->setQueryCacheImpl( $cache );
-    $config->setMetadataDriverImpl( $driver );
+    $config->setMetadataCacheImpl($cache);
+    $config->setQueryCacheImpl($cache);
+    $config->setMetadataDriverImpl($driver);
 
     $entityManager = EntityManager::create($dbParams, $config);
 
