@@ -5,14 +5,18 @@
     "require": {
         "doctrine/orm": "^2.7",
         "twig/twig": "^2.0",
-        "vlucas/phpdotenv": "^4.1"
+        "vlucas/phpdotenv": "^4.1",
+        "php": "^7.3.0"
     },
     "autoload": {
         "classmap": ["classes/", "classes/generated"]
     },
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.3.0"
+        }
     },
     "prefer-stable": true
 }
